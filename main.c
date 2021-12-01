@@ -1,12 +1,13 @@
 #include <kipr/botball.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include <gyro.h>
 #define leftMotor 0
 #define rightMotor 1
 #define claw 0
 #define topHat 0
 #define leftDistance 1
-#define rightDistance 2
+#define rightDistance 2 
 // turn_with_gyro params: first is left motor speed, second is right motor speed
 
 void followWall_black_R (int); //distance
@@ -37,11 +38,8 @@ int main() {
     followLineRight(3.1); 
     straight(90, 100); //on way to green crew mates
 
-    //motor(leftMotor, 60);
-    //motor(rightMotor, -60);
-    //msleep(875);
     turn_with_gyro(700, -700, 67);
-    straight(90, 1700); //turns and pushes green crew mates out 
+    straight(90, 1700); //turns right and pushes green crewmates out 
     
     motor(leftMotor, 35);
     motor(rightMotor, 100); 
@@ -62,13 +60,13 @@ int main() {
     
     followWall_black_L(2000);//follows the boarder wall to the perimeter of medbay
     
-    straight(80, 2700);
+    followWallLeft(2.8, 2000);
     ao();
     msleep(3100); //goes into med bay, waits 3s
 
 
     straight(-90, 2800);
-    turn_with_gyro(100, -900, 90);
+    turn_with_gyro(100, -900, 90); //turns, heads back
     
     followWall_black_R(2700);
     
@@ -183,15 +181,17 @@ void ramp() {
     straight(80, 1800); //alignment
 
     turn_with_gyro(100, 1000, 80);//left turn 
+
     motor(leftMotor, 70);
-    motor(rightMotor, 40);
+    motor(rightMotor, 40); 
     msleep(200);
-    followWallRight(4, 2900);
+    followWallRight(4, 2900); 
     printf("done1");
     //straight(90, 150);
+
     turn_with_gyro(100, 900, 75);
-    // while the bot detects the rail, follow line
-    while (analog(leftDistance) > 600){
+
+    while (analog(leftDistance) > 600){ // while the bot detects the rail, follow line
 
         if (analog(0) < 3500){
             motor(leftMotor, 90);
@@ -204,7 +204,7 @@ void ramp() {
     }
     printf("done \n");
     straight(90, 150);
-    turn_with_gyro(400, 1000, 95);
-    straight(50, 1000);//left turn on bridge
+    turn_with_gyro(400, 1000, 95); //left turn on bridge
+    straight(50, 1000);
     followLineRight(3.7);
 }
