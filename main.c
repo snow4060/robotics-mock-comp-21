@@ -32,11 +32,11 @@ int main() {
     enable_servo(claw);
     servo(1, 1300, 100);
     double startingTime = seconds();
-    /*
+    
     followWall_black_R(2900); //starting position alignment for consistency 
     motor(leftMotor, -50);
     motor(rightMotor, 85);
-    msleep(900); //left turn
+    msleep(950); //left turn
 
     straight(90, 1700);
     followLineRight(3.2); 
@@ -52,17 +52,30 @@ int main() {
     
     motor(leftMotor, -40);
     motor(rightMotor, 60); 
-    msleep(1100);
+    msleep(1150);
     straight(100, 1075); //left turn, pushes the red crewmates
     printf("%f, crewmates \n", seconds() - startingTime);
     motor(leftMotor, 25);
     msleep(100);
-    straight(90, 3200);
+    straight(90, 4050);
+    servo(1, 2000, 100);
     
     
     
-    turn_with_gyro(900, 0, 80); //right turn, begins heading to med bay
-    straight(90, 3550);
+    turn_with_gyro(900, -100, 70); //right turn, begins heading to med bay
+    
+    straight(90, 400);
+    ao();
+    motor(leftMotor, 60);
+    msleep(300);
+    straight(90, 700);
+    motor(leftMotor, 60);
+    msleep(800);
+    straight(90, 750);
+    motor(leftMotor, 60);
+    msleep(350);
+    straight(90, 1500);
+    
     turn_with_gyro(900, 0, 100); // seocnd right turn
     
     motor(rightMotor, 50);
@@ -70,12 +83,18 @@ int main() {
     
     followWall_black_L(2000);//follows the boarder wall to the perimeter of medbay
     
-    followWallLeft(2.6, 2000);
+    followWallLeft(2.2, 2000);
     servo(1, 0, 100);
     ao();
     msleep(3100); //goes into med bay, waits 3s
  
 	servo(1, 1300, 100);
+    
+    motor(leftMotor, 90);
+    motor(rightMotor, -75);
+    msleep(775);
+    straight(90, 750);
+ 	/*
     straight(-90, 3800);
     turn_with_gyro(100, -900, 90); //turns, heads back
     
@@ -84,20 +103,17 @@ int main() {
     straight(90, 4300);
     motor(rightMotor, 60); //alignment against wall
 	msleep(275);
-    //*/
+    //
     
-    /*
+    
     followWall_black_R(2700); //heads to ramp
     ramp(); //goes up ramp, pushes trash
     ao();
     msleep(400);
     servo(1, 2400, 100);
-    offRamp(); //exits ramp back to starting box
+    offRamp(); //exits ramp back to starting box*/
     
-	printf("%f", seconds() - startingTime);*/
-    
-    fuel();
-   
+   	printf("%f", seconds() - startingTime);
     return 0;
 
 }
@@ -225,7 +241,7 @@ void ramp() {
     printf("done \n");
     straight(90, 150);
     turn_with_gyro(400, 1000, 95); //left turn on bridge
-    straight(50, 1000);
+    straight(90, 550);
     followLineRight(3.7);
 }
 
@@ -270,7 +286,6 @@ void offRamp(){
     turn_with_gyro(900, 200, 85); //left turn, exits ramp
     
     followWallLeft(3, 2300);
-    turn_with_gyro(1000, -1000, 177); //u-turn, aligns back against cubes
     
 }
 
@@ -287,6 +302,9 @@ void fuel(){
     	straight(-80, 500);
     	set_servo_position(1, 1600);
     	msleep(700);
+        motor(leftMotor, 30);
+        msleep(25);
     	straight(90, 600);
     }
 }
+    
