@@ -67,11 +67,13 @@ int main() {
     straight(90, 400);
     ao();
     motor(leftMotor, 60);
-    msleep(300);
+    msleep(150);
     straight(90, 700);
+    ao();
     motor(leftMotor, 60);
-    msleep(800);
+    msleep(150);
     straight(90, 750);
+    ao();
     motor(leftMotor, 60);
     msleep(350);
     straight(90, 1500);
