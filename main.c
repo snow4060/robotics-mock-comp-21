@@ -64,9 +64,9 @@ int main() {
     
     turn_with_gyro(900, -100, 70); //right turn, begins heading to med bay
     
-    straight(90, 400);
+    straight(90, 400); //alignment + collection for wires
     ao();
-    motor(leftMotor, 60);
+    motor(leftMotor, 60); 
     msleep(150);
     straight(90, 700);
     ao();
@@ -80,9 +80,8 @@ int main() {
     
     turn_with_gyro(900, 0, 100); // seocnd right turn
     
-    motor(rightMotor, 50);
+    motor(rightMotor, 50); //alignment 
     msleep(125);
-    
     followWall_black_L(2000);//follows the boarder wall to the perimeter of medbay
     
     followWallLeft(2.2, 2000);
