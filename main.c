@@ -57,12 +57,12 @@ int main() {
     printf("%f, crewmates \n", seconds() - startingTime);
     motor(leftMotor, 25);
     msleep(100);
-    straight(90, 4050);
+    straight(90, 4150);
     servo(1, 2000, 100);
     
     
     
-    turn_with_gyro(900, -100, 70); //right turn, begins heading to med bay
+    turn_with_gyro(900, -250, 70); //right turn, begins heading to med bay
     
     straight(90, 400); //alignment + collection for wires
     ao();
@@ -76,7 +76,7 @@ int main() {
     ao();
     motor(leftMotor, 60);
     msleep(350);
-    straight(90, 1500);
+    straight(90, 1250);
     
     turn_with_gyro(900, 0, 100); // seocnd right turn
     
