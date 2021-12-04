@@ -28,7 +28,7 @@ int main() {
     //leftMotor = 0.7* rightMotor
     //code to make gyro work
     declare_motors(0, 1); 
-    calibrate_gyro(100);
+    calibrate_gyro(1000);
     enable_servo(claw);
     servo(1, 1300, 100);
     double startingTime = seconds();
@@ -40,15 +40,15 @@ int main() {
 
     straight(90, 1700);
     followLineRight(3.2); 
-    straight(90, 275); //on way to green crew mates
+    straight(90, 300); //on way to green crew mates
 
     turn_with_gyro(700, -700, 67);
-    straight(90, 1700); //turns right and pushes green crewmates out 
+    straight(90, 1200); //turns right and pushes green crewmates out 
     
     motor(leftMotor, 40);
     motor(rightMotor, 95); 
-    msleep(2550);
-    straight(90, 2175); //turns left, going under the bridge to the other side
+    msleep(2700);
+    straight(90, 2265); //turns left, going under the bridge to the other side
     
     motor(leftMotor, -40);
     motor(rightMotor, 60); 
@@ -57,34 +57,32 @@ int main() {
     printf("%f, crewmates \n", seconds() - startingTime);
     motor(leftMotor, 25);
     msleep(100);
-    straight(90, 4150);
+    straight(90, 4125);
     servo(1, 2000, 100);
     
-    
-    
-    turn_with_gyro(900, -250, 70); //right turn, begins heading to med bay
+    turn_with_gyro(900, -250, 60); //right turn, begins heading to med bay
     
     straight(90, 400); //alignment + collection for wires
     ao();
     motor(leftMotor, 60); 
-    msleep(150);
-    straight(90, 700);
+    msleep(200);
+    straight(90, 500);
     ao();
-    motor(leftMotor, 60);
-    msleep(150);
-    straight(90, 750);
-    ao();
-    motor(leftMotor, 60);
-    msleep(350);
-    straight(90, 1250);
     
-    turn_with_gyro(900, 0, 100); // seocnd right turn
+    motor(leftMotor, 100);
+    msleep(250);
+    straight(90, 1300);
     
-    motor(rightMotor, 50); //alignment 
+    motor(leftMotor, 50);
     msleep(125);
-    followWall_black_L(2000);//follows the boarder wall to the perimeter of medbay
+    turn_with_gyro(900, 300, 90); // seocnd right turn
     
-    followWallLeft(2.2, 2000);
+    motor(leftMotor, 50); //alignment 
+    msleep(100);
+    followWall_black_L(1600);//follows the boarder wall to the perimeter of medbay
+    
+    followWallLeft(2, 1800);
+    
     servo(1, 0, 100);
     ao();
     msleep(3100); //goes into med bay, waits 3s
@@ -92,10 +90,17 @@ int main() {
 	servo(1, 1300, 100);
     
     motor(leftMotor, 90);
-    motor(rightMotor, -75);
+    motor(rightMotor, -90);
     msleep(775);
     straight(90, 750);
- 	/*
+    ao();
+    msleep(100);
+    
+    straight(-90, 750);
+    motor(leftMotor, -60);
+    motor(rightMotor, 90);
+    msleep(775);
+ 	
     straight(-90, 3800);
     turn_with_gyro(100, -900, 90); //turns, heads back
     
@@ -104,7 +109,6 @@ int main() {
     straight(90, 4300);
     motor(rightMotor, 60); //alignment against wall
 	msleep(275);
-    //
     
     
     followWall_black_R(2700); //heads to ramp
