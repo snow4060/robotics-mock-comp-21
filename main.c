@@ -66,18 +66,20 @@ int main() {
     ao();
     motor(leftMotor, 60); 
     msleep(200);
-    straight(90, 500);
+    straight(90, 500); //first alignment 
     ao();
     
     motor(leftMotor, 100);
     msleep(250);
-    straight(90, 1300);
+    straight(90, 1300); //second alignment
+    ao();
     
-    motor(leftMotor, 50);
+    motor(leftMotor, 50); //third alignment
     msleep(125);
+
     turn_with_gyro(900, 300, 90); // seocnd right turn
     
-    motor(leftMotor, 50); //alignment 
+    motor(leftMotor, 50); //alignment for follow wall
     msleep(100);
     followWall_black_L(1600);//follows the boarder wall to the perimeter of medbay
     
