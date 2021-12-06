@@ -10,8 +10,8 @@
 #define rightDistance 2 
 // turn_with_gyro params: first is left motor speed, second is right motor speed
 
-void followWall_black_R (int); //distance
-void followWall_black_L (int); //distance
+void followWallBlackRight (int); //distance
+void followWallBlackLeft (int); //distance
 void followWallRight (double, int); //time in seconds, distance
 void followWallLeft (double, int);//time in seconds, distance
 void servo (int, int, int); //port, position, time in ms
@@ -33,7 +33,7 @@ int main() {
     servo(1, 1300, 100);
     double startingTime = seconds();
     
-    followWall_black_R(2900); //starting position alignment for consistency 
+    followWallBlackRight(2900); //starting position alignment for consistency 
     motor(leftMotor, -50);
     motor(rightMotor, 85);
     msleep(950); //left turn
@@ -81,7 +81,7 @@ int main() {
     
     motor(leftMotor, 50); //alignment for follow wall
     msleep(100);
-    followWall_black_L(1600);//follows the boarder wall to the perimeter of medbay
+    followWallBlackLeft(1600);//follows the boarder wall to the perimeter of medbay
     
     followWallLeft(2, 1800);
     
@@ -113,7 +113,7 @@ int main() {
 	msleep(275);
     
     
-    followWall_black_R(2700); //heads to ramp
+    followWallBlackRight(2700); //heads to ramp
     ramp(); //goes up ramp, pushes trash
     ao();
     msleep(400);
@@ -125,7 +125,7 @@ int main() {
 
 }
 
-void followWall_black_R(int distance) {
+void followWallBlackRight(int distance) {
     while (analog(topHat) < 3700) {
         if (analog(rightDistance) > distance -350) {
             motor(leftMotor, 13);
@@ -138,7 +138,7 @@ void followWall_black_R(int distance) {
     }
 }
 
-void followWall_black_L(int distance) {
+void followWallBlackLeft(int distance) {
     while (analog(topHat) < 3700) {
         if (analog(leftDistance) > distance -350) {
             motor(leftMotor, 100);
