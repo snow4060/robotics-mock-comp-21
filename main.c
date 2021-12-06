@@ -94,12 +94,12 @@ int main() {
     msleep(775);
     straight(90, 750);
     ao();
-    msleep(100);
+    msleep(100); //goes into red wires box 
     
     straight(-90, 750);
-    motor(leftMotor, -60);
+    motor(leftMotor, -90);
     motor(rightMotor, 90);
-    msleep(775);
+    msleep(775); //backs out of red wires box
  	
     straight(-90, 3800);
     turn_with_gyro(100, -900, 90); //turns, heads back
