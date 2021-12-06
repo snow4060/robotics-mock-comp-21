@@ -32,7 +32,7 @@ int main() {
     enable_servo(claw);
     servo(1, 1300, 100);
     double startingTime = seconds();
-    
+    /*
     followWallBlackRight(2900); //starting position alignment for consistency 
     motor(leftMotor, -50);
     motor(rightMotor, 85);
@@ -43,16 +43,16 @@ int main() {
     straight(90, 300); //on way to green crew mates
 
     turn_with_gyro(700, -700, 67);
-    straight(90, 1200); //turns right and pushes green crewmates out 
+    straight(90, 1700); //turns right and pushes green crewmates out 
     
     motor(leftMotor, 40);
     motor(rightMotor, 95); 
     msleep(2700);
-    straight(90, 2265); //turns left, going under the bridge to the other side
+    straight(90, 2240); //turns left, going under the bridge to the other side
     
     motor(leftMotor, -40);
     motor(rightMotor, 60); 
-    msleep(1150);
+    msleep(1225);
     straight(100, 1075); //left turn, pushes the red crewmates
     printf("%f, crewmates \n", seconds() - startingTime);
     motor(leftMotor, 25);
@@ -65,12 +65,12 @@ int main() {
     straight(90, 400); //alignment + collection for wires
     ao();
     motor(leftMotor, 60); 
-    msleep(200);
+    msleep(225);
     straight(90, 500); //first alignment 
     ao();
     
     motor(leftMotor, 100);
-    msleep(250);
+    msleep(325);
     straight(90, 1300); //second alignment
     ao();
     
@@ -79,8 +79,11 @@ int main() {
 
     turn_with_gyro(900, 300, 90); // seocnd right turn
     
-    motor(leftMotor, 50); //alignment for follow wall
-    msleep(100);
+    motor(rightMotor, 50);
+    msleep(150);
+    straight(90, 250);*/
+	/*
+    
     followWallBlackLeft(1600);//follows the boarder wall to the perimeter of medbay
     
     followWallLeft(2, 1800);
@@ -111,9 +114,11 @@ int main() {
     straight(90, 4300);
     motor(rightMotor, 60); //alignment against wall
 	msleep(275);
-    
+    */
     
     followWallBlackRight(2700); //heads to ramp
+    
+    
     ramp(); //goes up ramp, pushes trash
     ao();
     msleep(400);
@@ -221,14 +226,14 @@ void straight(int speed, int time) {
 }
 
 void ramp() {
-    straight(80, 1800); //alignment
+    straight(80, 1900); //alignment
 
     turn_with_gyro(100, 1000, 80);//left turn 
 
     motor(leftMotor, 70);
     motor(rightMotor, 40); 
-    msleep(200);
-    followWallRight(4, 2900); 
+    msleep(500);
+    followWallRight(3.7, 2900); 
     printf("done1\n");
     straight(90, 150);
 
@@ -246,15 +251,15 @@ void ramp() {
         }
     }
     printf("done \n");
-    straight(90, 150);
+    straight(90, 225);
     turn_with_gyro(400, 1000, 95); //left turn on bridge
     straight(90, 550);
-    followLineRight(3.7);
+    followLineRight(3.6);
 }
 
 
 void offRamp(){
-	straight(-80, 800);
+	straight(-80, 900);
     motor(leftMotor, 90*0.7);
     motor(rightMotor, -90);
     msleep(250); 
@@ -271,13 +276,13 @@ void offRamp(){
     while (analog(0) < 3700){
         straight(90, 10); //traves the upper segment of ramp
     }
-    straight(-90, 325); //alignment
+    straight(-90, 300); //alignment
     
     motor(leftMotor, 90);
     motor(rightMotor, -75); //right turn
     msleep(675);
     
-    straight(90, 1200); //alignmnt 
+    straight(90, 1225); //alignmnt 
     while(analog(rightDistance) > 600){
         if (analog(topHat) < 3500){
             motor(leftMotor, 45);
@@ -290,7 +295,7 @@ void offRamp(){
     } //off ramp
     
     straight(90, 550);
-    turn_with_gyro(900, 200, 85); //left turn, exits ramp
+    turn_with_gyro(900, 0, 85); //right turn, exits ramp
     
     followWallLeft(3, 2300);
     
